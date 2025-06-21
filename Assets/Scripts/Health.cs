@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        Containers.ST.healthContainer.Add(gameObject,this);
         Resurrection();
     }
     
