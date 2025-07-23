@@ -4,7 +4,12 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
-    [SerializeField] private bool isAlive = true;
+    private Unit unit;
+
+    private void Awake()
+    {
+        unit = GetComponent<Unit>();
+    }
 
     private void Start()
     {
@@ -14,7 +19,7 @@ public class Health : MonoBehaviour
     
     public void TakeDamage(int dmg)
     {
-        if(!isAlive)
+        if(!unit.IsAlive)
             return;
         currentHealth -= dmg;
         CheckIsAlive();
@@ -23,7 +28,7 @@ public class Health : MonoBehaviour
     public void Resurrection()
     {
         currentHealth = maxHealth;
-        isAlive = true;
+        unit.IsAlive = true;
     }
     
     private void CheckIsAlive ()
@@ -31,6 +36,6 @@ public class Health : MonoBehaviour
         if (currentHealth > 0) 
             return;
         currentHealth = 0;
-        isAlive = false;
+        unit.Die();
     }
 }
