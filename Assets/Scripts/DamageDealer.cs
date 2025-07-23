@@ -13,9 +13,9 @@ public class DamageDealer : MonoBehaviour
 
     private void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.CompareTag(otherHealthOwner.ToString()) && Containers.ST.healthContainer.ContainsKey(other.gameObject))
+        if (other.CompareTag(otherHealthOwner.ToString()))
         {
-            Containers.ST.healthContainer[other.gameObject].TakeDamage(damage);
+            Containers.ST.healthContainer[other.transform.parent.gameObject].TakeDamage(damage);
         }
     }
 }

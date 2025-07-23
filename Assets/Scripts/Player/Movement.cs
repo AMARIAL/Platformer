@@ -29,6 +29,8 @@ public class Movement : MonoBehaviour
 
     public void Move(float dir, bool isJump)
     {
+        if(!unit.IsAlive || !unit.IsCanMove) return;
+        
         if(isJump)
             Jump();
         

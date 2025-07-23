@@ -23,13 +23,15 @@ public class Skeleton : MonoBehaviour
     {
         if (unit.IsAlive)
         {
-            rigidBody.velocity = new Vector2(moveSpeed * (unit.IsFlip ? -1 : 1) , rigidBody.velocity.y);
-            animator.SetFloat("isRunning", Mathf.Abs(rigidBody.velocity.x));
+            if(unit.IsCanMove)
+                rigidBody.velocity = new Vector2(moveSpeed * (unit.IsFlip ? -1 : 1) , rigidBody.velocity.y);
         }
         else
         {
             isMove = false;
         }
+        
+        animator.SetFloat("isMoving", Mathf.Abs(rigidBody.velocity.x));
 
     }
     private void Update ()

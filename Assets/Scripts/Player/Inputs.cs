@@ -18,6 +18,7 @@ namespace Player
         {
             float horizontalDirection = Input.GetAxis(GlobalParams.HORIZONTAL_AXIS);
             bool isJumpPressed = Input.GetButtonDown(GlobalParams.JUMP);
+            
             movement.Move(horizontalDirection, isJumpPressed);
             
             if(Input.GetButtonDown(GlobalParams.FIRE))

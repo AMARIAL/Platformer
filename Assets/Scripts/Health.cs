@@ -5,10 +5,11 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     private Unit unit;
-
+    private Animator animator;
     private void Awake()
     {
         unit = GetComponent<Unit>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -22,9 +23,15 @@ public class Health : MonoBehaviour
         if(!unit.IsAlive)
             return;
         currentHealth -= dmg;
+        animator.Play("Hit");
         CheckIsAlive();
     }
-
+    public void DoHeal(int hp)
+    {
+        currentHealth += hp;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+    }
     public void Resurrection()
     {
         currentHealth = maxHealth;
