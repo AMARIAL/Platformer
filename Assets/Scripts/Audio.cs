@@ -16,8 +16,9 @@ public enum Sound
 }
 public enum Music
 {
-    menu,
-    game
+    game = 0,
+    win = 1,
+    lose = 2
 }
 public class Audio : MonoBehaviour
 {
@@ -29,7 +30,6 @@ public class Audio : MonoBehaviour
     [SerializeField] private AudioClip[] musicList;
     
     private Dictionary<Sound, AudioSource> sound;
-    private Dictionary<Music, AudioClip> music;
 
     private AudioSource musicAudio;
     
@@ -38,7 +38,7 @@ public class Audio : MonoBehaviour
         ST = this;
         sound = new Dictionary<Sound, AudioSource>();
         musicAudio = GetComponent<AudioSource>();
-        music = new Dictionary<Music, AudioClip>();
+
     }
     private void Start()
     {
@@ -76,7 +76,7 @@ public class Audio : MonoBehaviour
     
     public void PlayMusic(Music newMusic)
     {
-        musicAudio.clip = music[newMusic];
+        musicAudio.clip = musicList[(int)newMusic];
         
         if(MusicOn)
             musicAudio.Play();
