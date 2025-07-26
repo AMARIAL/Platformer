@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3231301344070966264}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: -0.913, z: 0}
+  m_LocalPosition: {x: -2.25, y: -0.979, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -103,7 +103,7 @@ Transform:
   m_GameObject: {fileID: 3266044191939991768}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.485, y: -0.902, z: 0}
+  m_LocalPosition: {x: -0.485, y: -0.968, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -165,9 +165,10 @@ GameObject:
   - component: {fileID: 6884140838747424033}
   - component: {fileID: 1196174847009022750}
   - component: {fileID: 1849825743519178095}
-  m_Layer: 7
+  - component: {fileID: 1534792181915248132}
+  m_Layer: 0
   m_Name: HitCollider
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 3475548007910661447}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.076, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -219,8 +220,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2, y: 0.15}
-  m_Size: {x: 0.4, y: 0.2}
+  m_Offset: {x: 0.17137192, y: 0.22247544}
+  m_Size: {x: 0.34274444, y: 0.23345026}
   m_Direction: 1
 --- !u!114 &1849825743519178095
 MonoBehaviour:
@@ -236,6 +237,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   otherHealthOwner: 1
+--- !u!114 &1534792181915248132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475548007910661447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9debac470f47e47aad447b2976e278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxSize: {x: 0.61, y: 0.22}
+  castDistance: -0.27
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &6215245774557928623
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +369,6 @@ GameObject:
   - component: {fileID: 2480183642452752993}
   - component: {fileID: 8957399991588535301}
   - component: {fileID: 8657503681761390253}
-  - component: {fileID: 1920860119172234026}
   m_Layer: 7
   m_Name: SkeletonBody
   m_TagString: Enemy
@@ -467,8 +484,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d40962c4cc6104d99a940c774349d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCanMove: 1
+  unitType: 1
   moveSpeed: 0.5
-  isMove: 1
+  state: 0
+  hitCollider: {fileID: 1196174847009022750}
 --- !u!114 &8957399991588535301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,15 +524,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1920860119172234026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7136139963463020822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395e48799a7590043a51ac4f797cc78c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

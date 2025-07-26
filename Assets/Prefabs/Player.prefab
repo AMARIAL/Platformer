@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 1537451532693496590}
   - component: {fileID: 6714711586147167258}
   - component: {fileID: 1444621962451972033}
+  - component: {fileID: 1605172970918275115}
   - component: {fileID: 8813810278216860840}
   - component: {fileID: 5541077508460600728}
-  - component: {fileID: 472364663882891776}
   - component: {fileID: 2368443074510191466}
-  - component: {fileID: 4063815732664660381}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -81,7 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1873473225
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 1111635249, guid: dacabd6c01544444eaf60da8b16331b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -142,6 +141,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1605172970918275115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241187507006568529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d46eb1f17c630f44834e103d9a5934b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCanMove: 1
+  unitType: 0
+  jumpForce: 3
+  moveSpeed: 1.5
 --- !u!114 &8813810278216860840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1133e46cea9ed4f8cd03e37a2bd728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &5541077508460600728
@@ -169,20 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8abfd91228e2dc40a8081d2b570eff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &472364663882891776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241187507006568529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99f4f1e5f0e2b454cb5c53a804d42cd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 3
-  moveSpeed: 1.5
 --- !u!114 &2368443074510191466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,18 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitCollider: {fileID: 5451559636899343390}
---- !u!114 &4063815732664660381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 241187507006568529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395e48799a7590043a51ac4f797cc78c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2948695808555720266
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 2948695808555720266}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1352, y: 0.0105, z: 0}
+  m_LocalPosition: {x: -0.045, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,8 +261,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16447993, y: 0.026150845}
-  m_Size: {x: 0.1, y: 0.07189157}
+  m_Offset: {x: 0.0016086069, y: 0.03340057}
+  m_Size: {x: 0.11415297, y: 0.065090425}
   m_Direction: 1
 --- !u!114 &4433136956819502266
 MonoBehaviour:
@@ -288,7 +276,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae7afa4bec056042a40564bd440fbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0
+  boxSize: {x: 0.12, y: 0.02}
+  castDistance: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &3139415300282631293
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,9 +292,9 @@ GameObject:
   - component: {fileID: 7166100585480956130}
   - component: {fileID: 5451559636899343390}
   - component: {fileID: 5888676681219227598}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: HitCollider
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,7 +308,7 @@ Transform:
   m_GameObject: {fileID: 3139415300282631293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.111, y: 0.205, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -354,8 +346,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.4, y: 0.2}
+  m_Offset: {x: 0.10849471, y: 0.20927542}
+  m_Size: {x: 0.44216692, y: 0.1804624}
   m_Direction: 1
 --- !u!114 &5888676681219227598
 MonoBehaviour:

@@ -2,22 +2,19 @@ using UnityEngine;
 
 public class GroundDetection : MonoBehaviour
 {
-    public bool isGrounded;
-
-    private void OnCollisionStay2D(Collision2D col)
+    [SerializeField] private Vector2 boxSize;
+    [SerializeField] private float castDistance;
+    [SerializeField] private LayerMask groundLayer;
+    public bool IsGrounded()
     {
-        if (col.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
+        if (Physics2D.BoxCast(transform.position, boxSize, 0 , -transform.up, castDistance, groundLayer))
+            return true;
+
+        return false;
     }
 
-    private void OnCollisionExit2D(Collision2D col)
+    private void OnDrawGizmos()
     {
-        if (col.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
+        Gizmos.DrawWireCube(transform.position - transform.up*castDistance, boxSize);
     }
-
 }

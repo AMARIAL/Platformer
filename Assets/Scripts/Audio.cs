@@ -72,6 +72,7 @@ public class Audio : MonoBehaviour
             musicAudio.Play();
         else
             musicAudio.Stop();
+        
     }
     
     public void PlayMusic(Music newMusic)
@@ -81,7 +82,14 @@ public class Audio : MonoBehaviour
         if(MusicOn)
             musicAudio.Play();
     }
-    
+
+    public void PauseMusic()
+    {
+        if(musicAudio.isPlaying)
+            musicAudio.Pause();
+        else
+            musicAudio.Play();
+    }
     public void PlaySound(Sound newSound)
     {
         if (!SoundOn) 

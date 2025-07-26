@@ -1,8 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Player
-{
 public class Attack : MonoBehaviour
 {
     [SerializeField] private Collider2D hitCollider;
@@ -20,7 +18,7 @@ public class Attack : MonoBehaviour
     
     public void Hit()
     {
-        if(isAttack) return;
+        if(Player.ST.state == Player.State.Dead || isAttack) return;
         
         animator.Play("Knight-Attack " + attackNum);
         
@@ -47,4 +45,4 @@ public class Attack : MonoBehaviour
         yield return null;
     }
     
-}}
+}
