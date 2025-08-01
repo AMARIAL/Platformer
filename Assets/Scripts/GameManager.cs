@@ -84,8 +84,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         ChangeLives();
         Player.ST.transform.position = savePoint;
-        Player.ST.state = Player.State.Idle;
-        Player.ST.Restart();
+        //Player.ST.state = Player.State.Idle;
+        //Player.ST.Restart();
         yield return null;
+    }
+    public void NewCheckPoint(Vector2 pos)
+    {
+        savePoint = pos;
     }
 }

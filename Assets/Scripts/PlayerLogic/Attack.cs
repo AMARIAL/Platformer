@@ -18,7 +18,7 @@ public class Attack : MonoBehaviour
     
     public void Hit()
     {
-        if(Player.ST.state == Player.State.Dead || isAttack) return;
+        //if(Player.ST.state == Player.State.Dead || isAttack) return;
         
         animator.Play("Knight-Attack " + attackNum);
         

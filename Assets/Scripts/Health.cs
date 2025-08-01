@@ -60,7 +60,6 @@ public class Health : MonoBehaviour
         if (currentHealth > 0) 
             return;
         currentHealth = 0;
-        unit.Die();
     }
     private IEnumerator  HpAnim()
     {

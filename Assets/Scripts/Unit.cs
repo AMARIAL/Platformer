@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-    public enum UnitType
-    {
-        Player,
-        Enemy,
-        Npc
-    }
+public enum UnitType
+{
+    Player,
+    Enemy,
+    Npc
+}
 public class Unit : MonoBehaviour
 {
     [SerializeField] private bool isCanMove;
@@ -27,7 +27,6 @@ public class Unit : MonoBehaviour
         isFlip = !isFlip;
         transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
     }
-    public virtual  void Die() {}
     public bool IsFlip
     {
         get => isFlip;

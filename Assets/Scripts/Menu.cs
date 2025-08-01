@@ -33,6 +33,7 @@ public class Menu : MonoBehaviour
         
         GameManager.ST.ChangeState(GameState.Pause);
         windows.SetActive(true);
+        MenuWindow.SetActive(true); 
     }
     
     public void OpenMenu()

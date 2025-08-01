@@ -14,8 +14,8 @@ public class AttackTrigger : MonoBehaviour
     }
     private void Update()
     {
-        if (Physics2D.BoxCast(transform.position, boxSize, 0 , -transform.up, castDistance, playerLayer))
-            skeleton.DoAttack();
+
+            
     }
     private void OnDrawGizmos()
     {

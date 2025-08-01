@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class Inputs : MonoBehaviour
 {
-    private Player movement;
-    private Attack attack;
+    public float horizontalDirection;
+    public bool isJumpPressed;
+    public bool isFirePressed;
     
-    private void Awake()
-    {
-        movement = GetComponent<Player>();
-        attack = GetComponent<Attack>();
-    }
     private void Update()
     {
-        float horizontalDirection = Input.GetAxis(GlobalParams.HORIZONTAL_AXIS);
-        bool isJumpPressed = Input.GetButtonDown(GlobalParams.JUMP);
-            
-        movement.Move(horizontalDirection, isJumpPressed);
-            
-        if(Input.GetButtonDown(GlobalParams.FIRE)) 
-            attack.Hit();
+        horizontalDirection = Input.GetAxis(GlobalParams.HORIZONTAL_AXIS);
+        isJumpPressed = Input.GetButtonDown(GlobalParams.JUMP);
+        isFirePressed = Input.GetButtonDown(GlobalParams.FIRE);
     }
 }
