@@ -11,6 +11,8 @@ public class JumpState : PlayerState
 
     public override void Enter()
     {
+        PlayerVars.Animator.SetBool("isGrounded",false);
+        PlayerVars.Animator.SetBool("isJumping",true);
         PlayerVars.Rigidbody2D.velocity = new Vector2(PlayerVars.Rigidbody2D.velocity.x, jumpForce);
     }
 
@@ -20,13 +22,13 @@ public class JumpState : PlayerState
 
     public override void Update()
     {
-        
-    }
-
-    public override Player.State GetNextState()
-    {
-        return StateKey; 
-    }
+        if (PlayerVars.GroundDetection.IsGrounded())
+        {
+            PlayerVars.Animator.SetBool("isGrounded",true);
+            PlayerVars.Animator.SetBool("isJumping",false);
+            Player.ST.TransitionToState(Player.State.Idle);
+        }
+    } 
 
     public override void OnTriggerEnter2D(Collider2D other)
     {

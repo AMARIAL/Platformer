@@ -18,14 +18,13 @@ public class IdleState : PlayerState
     public override void Update()
     {
         if(PlayerVars.Inputs.isJumpPressed && PlayerVars.GroundDetection.IsGrounded())
-            Player.ST.ChangeState(Player.State.Jump);
+            Player.ST.TransitionToState(Player.State.Jump);
+        
+                //if(PlayerVars.Inputs.horizontalDirection > 0)
+            //PlayerVars.Rigidbody2D.velocity = new Vector2(speedCurve.Evaluate(dir) * moveSpeed, PlayerVars.Rigidbody2D.velocity.y);
+            
     }
-
-    public override Player.State GetNextState()
-    {
-        return StateKey; 
-    }
-
+    
     public override void OnTriggerEnter2D(Collider2D other)
     {
     }

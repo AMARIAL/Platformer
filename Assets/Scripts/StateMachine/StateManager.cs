@@ -18,13 +18,7 @@ public abstract class StateManager<EnumState> : MonoBehaviour where EnumState : 
     
     private void Update()
     {
-        if(isTransitioning) return;
-        
-        Debug.Log(nextStateKey + " " + CurrentState.StateKey);
-        if (nextStateKey.Equals(CurrentState.StateKey))
-            CurrentState.Update();
-        else
-            TransitionToState(nextStateKey);
+        CurrentState.Update();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,15 +34,6 @@ public abstract class StateManager<EnumState> : MonoBehaviour where EnumState : 
     {
         CurrentState.OnTriggerStay2D(other);
     }
-
-    private void TransitionToState(EnumState key)
-    {
-        isTransitioning = true;
-        CurrentState.Exit();
-        CurrentState = states[key];
-        CurrentState.Enter();
-        nextStateKey = CurrentState.GetNextState();
-        isTransitioning = false;
-    }
+    
 }
 

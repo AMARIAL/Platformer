@@ -20,11 +20,6 @@ public class DeathState : PlayerState
 
     }
 
-    public override Player.State GetNextState()
-    {
-        return StateKey; 
-    }
-
     public override void OnTriggerEnter2D(Collider2D other)
     {
     }

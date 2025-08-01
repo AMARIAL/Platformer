@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -45,12 +46,16 @@ public class Player : StateManager<Player.State>
         states.Add(State.Jump, new JumpState(playerVars, State.Jump));
         states.Add(State.Move, new MoveState(playerVars, State.Move));
         states.Add(State.Death, new DeathState(playerVars, State.Death));
-        ChangeState(State.Idle);
+        CurrentState = states[State.Idle];
     }
-
-    public void ChangeState(State newState)
+    public void TransitionToState(Player.State key)
     {
-        CurrentState = states[newState];
+        if(isTransitioning) return;
+        isTransitioning = true;
+        CurrentState.Exit();
+        CurrentState = states[key];
+        CurrentState.Enter();
+        isTransitioning = false;
     }
 
 }
