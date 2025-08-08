@@ -10,6 +10,9 @@ public class Health : MonoBehaviour
     private Animator animator;
     private bool isScoreAnim;
     private Image HpIndicator;
+
+    public int CurrentHealth => currentHealth;
+
     private void Awake()
     {
         unit = GetComponent<Unit>();
